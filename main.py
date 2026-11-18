@@ -3,4 +3,13 @@
 # TODO-3: Whether if new bids need to be added
 # TODO-4: Compare bids in dictionary
 
+bids = {
+
+}
+
+name = input("What is your name?: ")
+bid = int(input("What is your bid?: ")
+
+bids[name] = bid
+
 
