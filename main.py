@@ -7,9 +7,15 @@ bids = {
 
 }
 
-name = input("What is your name?: ")
-bid = int(input("What is your bid?: ")
-
-bids[name] = bid
-
-
+while True:
+    new_bidder = ""
+    name = input("What is your name?: ")
+    bid = int(input("What is your bid?: "))
+    bids[name] = bid
+    new_bidder = input("Are there any other bidders?: ").lower()
+    if new_bidder == "yes":
+        print("\n" * 100)
+        continue
+    else:
+        print(bids)
+        break
