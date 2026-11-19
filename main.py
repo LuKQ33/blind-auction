@@ -6,22 +6,32 @@ import art
 
 print(art.logo)
 
-bids = {
+bids = {}
+end_auction = False
 
-}
-
-while True:
-    new_bidder = ""
+while not end_auction:
     name = input("What is your name?: ")
-    bid = int(input("What is your bid?: "))
+    while True:  # Loop until a valid positive integer is entered
+        bid = input("What is your bid?: ")
+        if bid.isdigit():
+            bid = int(bid)
+            break
+        else:
+            print("Wrong input! Type a number greater than 0")
+            continue
     bids[name] = bid
-    new_bidder = input("Are there any other bidders?: ").lower()
-    if new_bidder == "yes":
-        print("\n" * 100)
-        continue
-    else:
-        print(bids)
-        break
+    while True:  # Normalize input to avoid case/whitespace mismatches
+        new_bidder = input("Are there any other bidders? (Type 'yes' or 'no'): ").lower().strip()
+        if new_bidder not in ["yes", "no"]:
+            print("Wrong input! Type 'yes' or 'no'")
+            continue
+        elif new_bidder == "yes":
+            print("\n" * 100)
+            break
+        else:
+            print(bids)
+            end_auction = True
+            break
 
 highest_bid = 0
 winner = ""
