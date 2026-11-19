@@ -5,6 +5,21 @@ print(art.logo)
 bids = {}
 end_auction = False
 
+
+def find_highest_bidder(bidding_dictionary):
+    # Function to find the highest bid.
+    highest_bid = 0
+    winner = ""
+    for person, bid_amount in bidding_dictionary.items():
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = person
+    print(
+        f"The winner of the auction is ¡¡{winner.title()}!!"
+        f" with a bid of ${highest_bid}"
+    )
+
+
 while not end_auction:
     while True:  # Loop while checking if name is already taken.
         name = input("What is your name?: ").lower().strip()
@@ -42,18 +57,6 @@ while not end_auction:
             print("\n" * 100)
         else:
             print(bids)
+            find_highest_bidder(bids)
             end_auction = True
         break
-
-highest_bid = 0
-winner = ""
-
-for person, bid_amount in bids.items():
-    if bid_amount > highest_bid:
-        highest_bid = bid_amount
-        winner = person
-
-print(
-    f"The winner of the auction is ¡¡{winner.capitalize()}!!"
-    f" with a bid of ${highest_bid}"
-)
